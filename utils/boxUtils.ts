@@ -10,13 +10,16 @@ function calculateDiagonalFit(boxLength: number, boxWidth: number, itemLength: n
     return itemDiagonal <= boxDiagonal
 }
 
-export function findClosestBox(boxes: number[][], itemDimensions: number[]): {box: number[] | null, isDiagonal: boolean} {
+export function findClosestBox(
+    boxes: [number, number, number][],
+     itemDimensions: [number, number, number]
+    ): {box: [number, number, number] | null, isDiagonal: boolean} {
     // cheeky unpack
     const[itemLength, itemWidth, itemHeight] = itemDimensions
     //  few know this...
     const itemVolume = itemLength * itemWidth * itemHeight
     // can be a array of number or null, but also initializes closestBox to null
-    let closestBox: number[] | null = null
+    let closestBox: [number, number, number] | null = null
     let isDiagonal = false
     let smallestVolumeDifference = Infinity
 
@@ -27,7 +30,7 @@ export function findClosestBox(boxes: number[][], itemDimensions: number[]): {bo
         // e.g. if you had an item that was 10x5x6 
         // my previous algorithm would ignore a box that was
         // 6 x 10 x 5, and say go for a box above it like 10 x 10 x10
-        const orientations = [
+        const orientations: [number, number, number][] = [
             [box[0], box[1], box[2]],
             [box[0], box[2], box[1]],
             [box[1], box[0], box[2]],

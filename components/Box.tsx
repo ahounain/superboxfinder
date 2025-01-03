@@ -2,7 +2,7 @@ import { Edges } from '@react-three/drei'
 
 interface BoxProps {
     position: [number, number, number]
-    size: number[]
+    size: [number, number, number]
     color: string
 }
 

@@ -5,7 +5,7 @@ import { Item } from './Item'
 
 interface SceneProps {
   itemDimensions: { length: number; width: number; height: number }
-  closestBoxResult: { box: number[] | null; isDiagonal: boolean }
+  closestBoxResult: { box: [number, number , number] | null; isDiagonal: boolean }
 }
 
 export default function Scene({ itemDimensions, closestBoxResult }: SceneProps) {
@@ -15,10 +15,10 @@ export default function Scene({ itemDimensions, closestBoxResult }: SceneProps) 
   const rotationAngle = isDiagonal ? Math.PI / 4 : 0;
 
   // Position both boxes at the same center point
-  const centerPosition = [0, 0, 0]; // Center of the scene
+  const centerPosition: [number, number, number] = [0, 0, 0]; // Center of the scene
 
   // Adjust the item position to account for its height
-  const itemPosition = [0, 0, 0];
+  const itemPosition: [number, number, number] = [0, 0, 0];
 
   // Adjust the outer box position to account for its height
   const outerBoxHeight = closestBoxResult.box ? closestBoxResult.box[1] : 0;

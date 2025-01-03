@@ -2,7 +2,7 @@ import { Edges } from '@react-three/drei'
 
 interface ItemProps {
     position: [number, number, number]
-    size: [number]
+    size: [number, number, number]
     rotation? : [number, number, number]
 }
 

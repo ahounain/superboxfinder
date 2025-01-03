@@ -16,13 +16,11 @@ export default function BoxFinder() {
     height: 1 
   })
   const [closestBoxResult, setClosestBoxResult] = useState<{
-     box: number[] | null,
+     box: [number, number, number] | null,
     isDiagonal: boolean 
-  }>
-  // initial state
-  ({ box: null, isDiagonal: false })
+  }>({ box: null, isDiagonal: false });
   const [searchPerformed, setSearchPerformed] = useState(false)
-  const boxesRef = useRef<number[][]>([
+  const boxesRef = useRef<[number, number, number][]>([
     [6,6,6],
     [8,8,8],
     [10,10,10],
@@ -52,6 +50,8 @@ export default function BoxFinder() {
     const length = parseFloat(form.boxLength.value)
     const width = parseFloat(form.boxWidth.value)
     const height = parseFloat(form.boxHeight.value)
+    
+  // const length = form.elements.namedItem('boxLength') as HTMLInputElemen
     // adds the inputted array to the list of boxes
     boxesRef.current = [...boxesRef.current, [length, width, height]]
     form.reset()
